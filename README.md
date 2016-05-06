@@ -24,6 +24,7 @@ Features
 * View source code with profiling stats per line
 * Navigate profile information in source code view (click on red percent numbers)
 * Open files in explorer, in default editor or in Visual Studio
+* Saving collected data to file for analyzing later
 
 Screenshots
 -----------

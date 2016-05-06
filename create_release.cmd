@@ -6,7 +6,7 @@ set PATH=%QT%\bin;%PATH%
 call "%VS120COMNTOOLS%..\..\VC\vcvarsall.bat" x64
 
 set BUILD="%~dp0Build\Build\Release"
-for /f "delims=" %%i IN ('git rev-list --count HEAD') do set TARGET=CxxProfiler-r%%i
+set TARGET=CxxProfiler-%1-win64
 
 mkdir "%TARGET%" 2>nul
 

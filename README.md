@@ -22,6 +22,7 @@ Features
 * Shows call graph - which function calls which one
 * Search or filter by function name
 * View source code with profiling stats per line
+* Navigate profile information in source code view (click on red percent numbers)
 * Open files in explorer, in default editor or in Visual Studio
 
 Screenshots

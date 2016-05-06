@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SymbolWidget</class>
+ <widget class="QWidget" name="SymbolWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>884</width>
+    <height>667</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QComboBox" name="cbFilterChoice"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="txtFilter"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnSearch">
+       <property name="toolTip">
+        <string>Jump to item with name that maches entered text</string>
+       </property>
+       <property name="text">
+        <string>&amp;Search</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnFilter">
+       <property name="toolTip">
+        <string>Hide all items whose name does not match entered text</string>
+       </property>
+       <property name="text">
+        <string>&amp;Filter</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblMinSamples">
+       <property name="text">
+        <string>Min samples:</string>
+       </property>
+       <property name="buddy">
+        <cstring>spnMinSamples</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spnMinSamples">
+       <property name="toolTip">
+        <string>Symbols with less samples than this will be hidden</string>
+       </property>
+       <property name="maximum">
+        <number>100000</number>
+       </property>
+       <property name="value">
+        <number>5</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="chkShowAllSymbols">
+       <property name="toolTip">
+        <string>Toggle between wheter to show symbols without source file location.</string>
+       </property>
+       <property name="text">
+        <string>Show &amp;all symbols</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QTreeWidget" name="treeWidget">
+      <property name="contextMenuPolicy">
+       <enum>Qt::CustomContextMenu</enum>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::ExtendedSelection</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+      <column>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Self</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Total</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>% Self</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>% Total</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Module</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>File</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="SourceWidget" name="txtSource">
+      <property name="lineWrapMode">
+       <enum>QPlainTextEdit::NoWrap</enum>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SourceWidget</class>
+   <extends>QPlainTextEdit</extends>
+   <header>SourceWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>cbFilterChoice</tabstop>
+  <tabstop>txtFilter</tabstop>
+  <tabstop>btnSearch</tabstop>
+  <tabstop>btnFilter</tabstop>
+  <tabstop>spnMinSamples</tabstop>
+  <tabstop>chkShowAllSymbols</tabstop>
+  <tabstop>treeWidget</tabstop>
+  <tabstop>txtSource</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

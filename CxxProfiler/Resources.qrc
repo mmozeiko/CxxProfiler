@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/CxxProfiler">
+        <file>Icon.png</file>
+    </qresource>
+</RCC>

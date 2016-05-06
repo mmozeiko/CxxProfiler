@@ -17,11 +17,20 @@ Features
 
 * Allows to profile 32-bit or 64-bit executables
 * Run new process or attach existing one
+* Automatic download of pdb files for system dll files
 * Shows flat view - who was function taking most time
 * Shows call graph - which function calls which one
 * Search or filter by function name
-* View source code
+* View source code with profiling stats per line
 * Open files in explorer, in default editor or in Visual Studio
+
+Screenshots
+-----------
+
+![screenshot1.png](https://raw.githubusercontent.com/wiki/mmozeiko/CxxProfiler/screenshot1.png)
+![screenshot2.png](https://raw.githubusercontent.com/wiki/mmozeiko/CxxProfiler/screenshot2.png)
+![screenshot3.png](https://raw.githubusercontent.com/wiki/mmozeiko/CxxProfiler/screenshot3.png)
+
 
 Build instructions
 ------------------
@@ -35,11 +44,12 @@ Build instructions
 Future plans, TODO
 ------------------
 
-* dwarf debug info support for gcc/clang compilers
-* port to other platforms (GNU/Linux, OSX, ...)
-* visualizations (charts, flame graph)
-* displaying results in real time
-* remove dependency on Qt?
+* Capturing/showing assembly output for functions
+* Dwarf debug info support for gcc/clang compilers
+* Port to other platforms (GNU/Linux, OSX, ...)
+* Visualizations (charts, flame graph)
+* Displaying results in real time
+* Remove dependency on Qt?
 
 License
 -------

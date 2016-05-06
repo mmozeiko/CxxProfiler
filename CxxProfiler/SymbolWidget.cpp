@@ -74,7 +74,7 @@ QVariant SymbolItem::data(int column, int role) const
         switch (column)
         {
         case 0:
-            return QString("%1, 0x%2").arg(mSymbol->name).arg(mSymbol->address, 0, 16);
+            return mSymbol->name;
         case 1:
             return mSelf;
         case 2:

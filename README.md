@@ -26,6 +26,11 @@ Features
 * Open files in explorer, in default editor or in Visual Studio
 * Saving collected data to file for analyzing later
 
+Download
+--------
+
+Get 64-bit Windows binary on [releases](https://github.com/mmozeiko/CxxProfiler/releases) page.
+
 Screenshots
 -----------
 

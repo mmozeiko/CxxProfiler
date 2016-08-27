@@ -6,9 +6,9 @@ Profiler attaches to process as a debugger, so make sure you disable any code th
 
 For more accurate results do following steps when building executable (and dll files it depends)
 
-1. enable optimizations (C/C++ -> Optimizations -> Optimization)
-2. generate debug information in compiler (C/C++ -> General -> Debug Information Format)
-3. generate debug information in linker (Linker -> Debugging -> Generate Debug Info)
+1. enable optimizations (C/C++ -> Optimizations -> Optimization, /O2)
+2. generate debug information in compiler (C/C++ -> General -> Debug Information Format, /Zi)
+3. generate debug information in linker (Linker -> Debugging -> Generate Debug Info, /DEBUG)
 4. for 32-bit build, don't omit frame pointers (C/C++ -> Command Line -> put in Additional Options '/Oy-')
 5. for VS2013 and newer add /Zo in additional compiler options for enhanced debug information
 

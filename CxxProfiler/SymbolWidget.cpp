@@ -285,6 +285,10 @@ SymbolWidget::SymbolWidget(QMenu* menu, QWidget* parent)
 
                 loadSource(symbol->getFilename(), symbol->getLine(), parentSym->getDefinitionLine(), parentSym->getDefinitionLineLast());
             }
+            else
+            {
+                loadSource(QString(), 0, 0, 0);
+            }
         }
     });
 

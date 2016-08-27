@@ -1,6 +1,6 @@
 @echo off
 
-set QT=C:\Qt\5.6.0-desktop-vs2013-x64
+set QT=C:\Qt\5.7.0-desktop-vs2013-x64
 set PATH=%QT%\bin;%PATH%
 
 call "%VS120COMNTOOLS%..\..\VC\vcvarsall.bat" x64

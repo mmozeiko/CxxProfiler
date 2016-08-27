@@ -1,7 +1,7 @@
 @echo off
 
 if "%QTDIR%" EQU "" (
-  set QT=C:\Qt\5.6.0-desktop-vs2013-x64
+  set QT=C:\Qt\5.7.0-desktop-vs2013-x64
 ) else (
   set QT=%QTDIR%
 )

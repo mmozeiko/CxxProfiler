@@ -1,0 +1,19 @@
+version: '#{build}'
+branches:
+  only:
+  - master
+  - ci
+skip_tags: true
+clone_depth: 1
+build_script:
+  - mkdir Build
+  - cd Build
+  - cmake -G "Visual Studio 12 Win64" -DCMAKE_PREFIX_PATH=C:\Qt\5.7\msvc2013_64\lib\cmake ..
+  - cmake --build .
+test: off
+notifications:
+  - provider: Email
+    to:
+      - martins.mozeiko+cxxprofiler@gmail.com
+  - on_build_success: false
+  - on_build_failure: true

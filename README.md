@@ -1,6 +1,11 @@
 C/C++ Profiler
 ==============
 
+[![Build Status](https://ci.appveyor.com/api/projects/status/mus8ve0g0g2sc9qb/branch/master?svg=true)](https://ci.appveyor.com/project/mmozeiko/cxxprofiler/branch/master)
+[![Downloads](https://img.shields.io/github/downloads/mmozeiko/CxxProfiler/total.svg?maxAge=86400)](https://github.com/mmozeiko/CxxProfiler/releases)
+[![Release](https://img.shields.io/github/release/mmozeiko/CxxProfiler.svg?maxAge=86400)](https://github.com/mmozeiko/CxxProfiler/releases/latest)
+[![License](https://img.shields.io/github/license/mmozeiko/CxxProfiler.svg?maxAge=2592000)](https://github.com/mmozeiko/CxxProfiler/blob/master/LICENSE)
+
 Simple sampling C/C++ profiler. Requires 64-bit Windows.
 Profiler attaches to process as a debugger, so make sure you disable any code that does something different when running under debugger.
 

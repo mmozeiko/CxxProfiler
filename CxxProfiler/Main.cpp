@@ -27,6 +27,7 @@ int main(int argc, char* argv[])
     QApplication app(argc, argv);
     app.setApplicationName("C/C++ Profiler");
     app.setWindowIcon(QIcon(":/CxxProfiler/Icon.png"));
+    app.setApplicationVersion("2");
 
     EnableDebugPrivileges();
 

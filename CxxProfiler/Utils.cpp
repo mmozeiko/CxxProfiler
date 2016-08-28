@@ -168,3 +168,32 @@ QString GetSettingsFile()
 {
     return QDir(qApp->applicationDirPath()).filePath("config.ini");
 }
+
+void DetectVSLocations(QSettings& settings)
+{
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+
+    QString vs2013 = env.value("VS120COMNTOOLS", "C:\\Program Files(x86)\\Microsoft Visual Studio 12.0\\Common7\\Tools\\");
+    vs2013 += "..\\..\\VC";
+    if (!QFileInfo(vs2013).isDir())
+    {
+        vs2013.clear();
+    }
+
+    QString vs2015 = env.value("VS140COMNTOOLS", "C:\\Program Files(x86)\\Microsoft Visual Studio 14.0\\Common7\\Tools\\");
+    vs2015 += "..\\..\\VC";
+    if (!QFileInfo(vs2015).isDir())
+    {
+        vs2015.clear();
+    }
+
+    QString sdk10 = "C:\\Program Files (x86)\\Windows Kits\\10\\Source\\10.0.10586.0";
+    if (!QFileInfo(sdk10).isDir())
+    {
+        sdk10.clear();
+    }
+
+    settings.setValue("Preferences/VS2013", QDir::cleanPath(vs2013));
+    settings.setValue("Preferences/VS2015", QDir::cleanPath(vs2015));
+    settings.setValue("Preferences/SDK10", QDir::cleanPath(sdk10));
+}

@@ -26,3 +26,4 @@ void OpenInExplorer(const QString& file);
 void OpenInEditor(const QString& file);
 
 QString GetSettingsFile();
+void DetectVSLocations(QSettings& settings);

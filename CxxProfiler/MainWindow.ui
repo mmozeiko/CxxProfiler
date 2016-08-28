@@ -45,6 +45,8 @@
     <addaction name="actFileOpen"/>
     <addaction name="actFileSave"/>
     <addaction name="separator"/>
+    <addaction name="actFilePreferences"/>
+    <addaction name="separator"/>
     <addaction name="actFileQuit"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
@@ -107,6 +109,14 @@
    </property>
    <property name="menuRole">
     <enum>QAction::QuitRole</enum>
+   </property>
+  </action>
+  <action name="actFilePreferences">
+   <property name="text">
+    <string>Preferences...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
    </property>
   </action>
  </widget>

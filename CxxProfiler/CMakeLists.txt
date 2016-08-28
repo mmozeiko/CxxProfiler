@@ -5,6 +5,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(UI
   MainWindow.ui
   NewDialog.ui
+  Preferences.ui
   RunningDialog.ui
   SymbolWidget.ui
 )
@@ -14,6 +15,7 @@ set(MOC
   SyntaxHighlighter.h
   MainWindow.h
   NewDialog.h
+  Preferences.h
   RunningDialog.h
   SymbolWidget.h
   SourceWidget.h
@@ -31,6 +33,7 @@ set(SOURCE
   SyntaxHighlighter.cpp
   MainWindow.cpp
   NewDialog.cpp
+  Preferences.cpp
   RunningDialog.cpp
   SymbolWidget.cpp
   SourceWidget.cpp

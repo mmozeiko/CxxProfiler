@@ -1,4 +1,5 @@
 #include "SourceLoader.h"
+#include "Utils.h"
 #include <limits.h>
 
 enum
@@ -11,6 +12,10 @@ SourceLoader::SourceLoader(uint32_t totalSamples, const FileProfile& fileProfile
     : totalSamples(totalSamples)
     , fileProfile(fileProfile)
 {
+    QSettings settings(GetSettingsFile(), QSettings::IniFormat);
+    vs2013 = QDir::toNativeSeparators(settings.value("Preferences/VS2013", QString()).toString());
+    vs2015 = QDir::toNativeSeparators(settings.value("Preferences/VS2015", QString()).toString());
+    sdk10 = QDir::toNativeSeparators(settings.value("Preferences/SDK10", QString()).toString());
 }
 
 SourceLoader::~SourceLoader()
@@ -45,21 +50,36 @@ QFuture<LoadResult> SourceLoader::load(const QString& fname, int lineFrom, int l
         }
 
         QString fname2 = fname;
-        if (fname.startsWith("f:\\dd\\vctools\\crt\\crtw32\\"))
+        if (fname.startsWith("f:\\dd\\vctools\\crt\\crtw32\\") && !vs2013.isEmpty())
         {
-            QString vcRoot = "C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\";
-            QString path = vcRoot + "crt\\src\\";
+            QString path = vs2013 + "\\crt\\src\\";
             if (QFileInfo(path + QFileInfo(fname).fileName()).isFile())
             {
                 fname2 = path + QFileInfo(fname).fileName();
             }
             else
             {
-                path = vcRoot + "crt\\src\\intel\\";
+                path = vs2013 + "\\crt\\src\\intel\\";
                 if (QFileInfo(path + QFileInfo(fname).fileName()).isFile())
                 {
                     fname2 = path + QFileInfo(fname).fileName();
                 }
+            }
+        }
+        else if (fname.startsWith("f:\\dd\\vctools\\crt\\vcstartup\\src\\startup\\") && !vs2015.isEmpty())
+        {
+            QString path = vs2015 + "\\crt\\src\\vcruntime\\";
+            if (QFileInfo(path + QFileInfo(fname).fileName()).isFile())
+            {
+                fname2 = path + QFileInfo(fname).fileName();
+            }
+        }
+        else if (fname.startsWith("d:\\th\\minkernel\\crts\\ucrt\\src\\appcrt\\") && !sdk10.isEmpty())
+        {
+            QString path = sdk10 + "\\ucrt\\" + fname.right(fname.length() - QLatin1String("d:\\th\\minkernel\\crts\\ucrt\\src\\appcrt\\").size());
+            if (QFileInfo(path).isFile())
+            {
+                fname2 = path;
             }
         }
 

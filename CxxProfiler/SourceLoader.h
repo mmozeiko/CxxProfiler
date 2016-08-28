@@ -26,6 +26,10 @@ public:
 private:
     uint32_t totalSamples;
     FileProfile fileProfile;
+
+    QString vs2013;
+    QString vs2015;
+    QString sdk10;
 };
 
 typedef QSharedPointer<SourceLoader> SourceLoaderPtr;

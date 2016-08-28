@@ -1,9 +1,11 @@
 #include "MainWindow.h"
 #include "NewDialog.h"
+#include "Preferences.h"
 #include "RunningDialog.h"
 #include "Profiler.h"
 #include "SymbolWidget.h"
 #include "Symbols.h"
+#include "Utils.h"
 #include "Version.h"
 
 MainWindow::MainWindow()
@@ -15,6 +17,10 @@ MainWindow::MainWindow()
         if (settings.contains("MainWindow/geometry"))
         {
             restoreGeometry(settings.value("MainWindow/geometry").toByteArray());
+        }
+        if (!settings.contains("Preferences/VS2013"))
+        {
+            DetectVSLocations(settings);
         }
     }
 
@@ -355,6 +361,11 @@ MainWindow::MainWindow()
             loadData(pointerSize, qUncompress(data));
             mDataSaved = true;
         }
+    });
+
+    QObject::connect(ui.actFilePreferences, &QAction::triggered, this, [this]()
+    {
+        Preferences(this).exec();
     });
 
     QObject::connect(ui.actFileSave, &QAction::triggered, this, &MainWindow::saveData);

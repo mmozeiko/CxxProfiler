@@ -198,12 +198,9 @@ MainWindow::MainWindow()
     QObject::connect(mFlatProfile, &SymbolWidget::setMinSamples, mCallGraph, &SymbolWidget::changeMinimumSamples);
     QObject::connect(mCallGraph, &SymbolWidget::setMinSamples, mFlatProfile, &SymbolWidget::changeMinimumSamples);
 
-    mTabs = new QTabWidget(this);
+    mTabs = new QTabWidget;
     mTabs->addTab(mCallGraph, "Call Graph");
     mTabs->addTab(mFlatProfile, "Flat Profile");
-    mTabs->hide();
-
-    setCentralWidget(mTabs);
 
     QObject::connect(ui.actHelpAbout, &QAction::triggered, this, [this]()
     {
@@ -546,7 +543,7 @@ void MainWindow::loadData(uint32_t pointerSize, const QByteArray& data)
     callGraphWidget->setVisible(true);
 
     emit ui.actFileSave->setEnabled(true);
-    emit mTabs->show();
+    setCentralWidget(mTabs);
 }
 
 bool MainWindow::saveData()

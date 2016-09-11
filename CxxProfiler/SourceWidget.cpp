@@ -199,3 +199,14 @@ void SourceWidget::keyReleaseEvent(QKeyEvent* ev)
 
     QPlainTextEdit::keyReleaseEvent(ev);
 }
+
+void SourceWidget::mouseReleaseEvent(QMouseEvent* ev)
+{
+    if (ev->button() == Qt::BackButton)
+    {
+        emit backClicked();
+        return;
+    }
+
+    QPlainTextEdit::mouseReleaseEvent(ev);
+}

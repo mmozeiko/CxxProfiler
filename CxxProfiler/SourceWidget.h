@@ -29,4 +29,5 @@ private:
     void resizeEvent(QResizeEvent* ev) override;
     void contextMenuEvent(QContextMenuEvent* ev) override;
     void keyReleaseEvent(QKeyEvent* ev) override;
+    void mouseReleaseEvent(QMouseEvent* ev) override;
 };

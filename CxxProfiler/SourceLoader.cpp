@@ -74,9 +74,57 @@ QFuture<LoadResult> SourceLoader::load(const QString& fname, int lineFrom, int l
                 fname2 = path + QFileInfo(fname).fileName();
             }
         }
+        else if (fname.startsWith("d:\\th\\minkernel\\crts\\ucrt\\devdiv\\vcruntime\\inc\\") && !vs2015.isEmpty())
+        {
+            QString path = vs2015 + "\\crt\\src\\vcruntime\\";
+            if (QFileInfo(path + QFileInfo(fname).fileName()).isFile())
+            {
+                fname2 = path + QFileInfo(fname).fileName();
+            }
+        }
+        else if (fname.startsWith("f:\\dd\\vctools\\crt\\vcstartup\\src\\misc\\") && !vs2015.isEmpty())
+        {
+            QString path = vs2015 + "\\crt\\src\\" + fname.right(fname.length() - QLatin1String("f:\\dd\\vctools\\crt\\vcstartup\\src\\misc\\").size());
+            if (QFileInfo(path).isFile())
+            {
+                fname2 = path;
+            }
+            else
+            {
+                QString path = vs2015 + "\\crt\\src\\vcruntime\\" + fname.right(fname.length() - QLatin1String("f:\\dd\\vctools\\crt\\vcstartup\\src\\misc\\").size());
+                if (QFileInfo(path).isFile())
+                {
+                    fname2 = path;
+                }
+            }
+        }
+        else if (fname.startsWith("f:\\dd\\vctools\\crt\\vcruntime\\src\\string\\") && !vs2015.isEmpty())
+        {
+            QString path = vs2015 + "\\crt\\src\\" + fname.right(fname.length() - QLatin1String("f:\\dd\\vctools\\crt\\vcruntime\\src\\string\\").size());
+            if (QFileInfo(path).isFile())
+            {
+                fname2 = path;
+            }
+        }
         else if (fname.startsWith("d:\\th\\minkernel\\crts\\ucrt\\src\\appcrt\\") && !sdk10.isEmpty())
         {
             QString path = sdk10 + "\\ucrt\\" + fname.right(fname.length() - QLatin1String("d:\\th\\minkernel\\crts\\ucrt\\src\\appcrt\\").size());
+            if (QFileInfo(path).isFile())
+            {
+                fname2 = path;
+            }
+        }
+        else if (fname.startsWith("d:\\th\\minkernel\\crts\\ucrt\\inc\\") && !sdk10.isEmpty())
+        {
+            QString path = sdk10 + "\\ucrt\\inc\\" + fname.right(fname.length() - QLatin1String("d:\\th\\minkernel\\crts\\ucrt\\inc\\").size());
+            if (QFileInfo(path).isFile())
+            {
+                fname2 = path;
+            }
+        }
+        else if (fname.startsWith("f:\\dd\\vctools\\crt\\vcruntime\\src\\") && !sdk10.isEmpty())
+        {
+            QString path = sdk10 + "\\ucrt\\" + fname.right(fname.length() - QLatin1String("f:\\dd\\vctools\\crt\\vcruntime\\src\\").size());
             if (QFileInfo(path).isFile())
             {
                 fname2 = path;

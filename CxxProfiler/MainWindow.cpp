@@ -257,24 +257,32 @@ MainWindow::MainWindow()
             return;
         }
 
-        ProfilerOptions opt = newDialog.getOptions();
-        Profiler profiler(opt);
-
-        RunningDialog runningDialog(this, &profiler);
-
-        if (action == NewDialog::RunNewApplication)
+        QByteArray data;
+        uint32_t pointerSize = 0;
         {
-            profiler.execute(newDialog.getApplication(), newDialog.getFolder(), newDialog.getArguments());
+            ProfilerOptions opt = newDialog.getOptions();
+            Profiler profiler(opt);
+
+            RunningDialog runningDialog(this, &profiler);
+
+            if (action == NewDialog::RunNewApplication)
+            {
+                profiler.execute(newDialog.getApplication(), newDialog.getFolder(), newDialog.getArguments());
+            }
+            else if (action == NewDialog::AttachToProcess)
+            {
+                profiler.attach(newDialog.getProcessId());
+            }
+
+            if (runningDialog.exec() == QDialog::Accepted)
+            {
+                data = profiler.serializeCallStacks();
+                pointerSize = profiler.getSizeOfPointer();
+            }
         }
-        else if (action == NewDialog::AttachToProcess)
+        if (!data.isEmpty())
         {
-            profiler.attach(newDialog.getProcessId());
-        }
-
-        if (runningDialog.exec() == QDialog::Accepted)
-        {
-            QByteArray data = profiler.serializeCallStacks();
-            loadData(profiler.getSizeOfPointer(), data);
+            loadData(pointerSize, data);
             mDataSaved = false;
         }
     });

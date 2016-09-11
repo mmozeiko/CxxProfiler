@@ -126,7 +126,6 @@ NewDialog::NewDialog(QWidget* parent)
         ui.lineRunNewApplication->setText(QDir::toNativeSeparators(settings.value("NewDialog/application", QString()).toString()));
         ui.lineRunNewFolder->setText(QDir::toNativeSeparators(settings.value("NewDialog/folder", QString()).toString()));
         ui.lineRunNewArguments->setText(settings.value("NewDialog/arguments", QString()).toString());
-        ui.chkOptionsCapture->setChecked(settings.value("NewDialog/debugOutput", true).toBool());
         ui.chkDownloadSymbols->setChecked(settings.value("NewDialog/downloadSymbols", true).toBool());
         ui.spnOptionsSamplingFreq->setValue(settings.value("NewDialog/samplingFrequency", 5).toInt());
     }
@@ -275,7 +274,6 @@ void NewDialog::saveSettings() const
         settings.setValue("NewDialog/application", QDir(ui.lineRunNewApplication->text()).path());
         settings.setValue("NewDialog/folder", QDir(ui.lineRunNewFolder->text()).path());
         settings.setValue("NewDialog/arguments", ui.lineRunNewArguments->text());
-        settings.setValue("NewDialog/debugOutput", ui.chkOptionsCapture->isChecked());
         settings.setValue("NewDialog/downloadSymbols", ui.chkDownloadSymbols->isChecked());
         settings.setValue("NewDialog/samplingFrequency", ui.spnOptionsSamplingFreq->value());
     }
@@ -304,7 +302,6 @@ DWORD NewDialog::getProcessId() const
 ProfilerOptions NewDialog::getOptions() const
 {
     ProfilerOptions opt;
-    opt.captureDebugOutputString = ui.chkOptionsCapture->isChecked();
     opt.downloadSymbols = ui.chkDownloadSymbols->isChecked();
     opt.samplingFreqInMs = ui.spnOptionsSamplingFreq->value();
     return opt;

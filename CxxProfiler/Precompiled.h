@@ -4,14 +4,11 @@
 
 #pragma warning (push, 0)
 
-#define DBGHELP_TRANSLATE_TCHAR
 #define NOMINMAX
 #include <windows.h>
 #include <atlbase.h>
-#include <mmsystem.h>
 #include <tlhelp32.h>
 #include <psapi.h>
-#include <dbghelp.h>
 
 #include <QtCore>
 #include <QtConcurrent>

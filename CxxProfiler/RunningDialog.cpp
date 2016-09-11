@@ -4,7 +4,7 @@
 RunningDialog::RunningDialog(QWidget* parent, Profiler* profiler)
     : QDialog(parent)
     , mTimer(this)
-    , mProcess(nullptr)
+    , mProcess(INVALID_HANDLE_VALUE)
     , mProfiler(profiler)
 {
     ui.setupUi(this);
@@ -25,11 +25,11 @@ RunningDialog::RunningDialog(QWidget* parent, Profiler* profiler)
         }
     });
 
-    QObject::connect(mProfiler, &Profiler::attached, this, [this](HANDLE process)
+    QObject::connect(mProfiler, &Profiler::attached, this, [this](DWORD pid)
     {
         ui.pbProgress->show();
-        mProcess = process;
-        mLastProcessTime = mCpuUsage.getProcessTime(process);
+        mProcess = OpenProcess(PROCESS_QUERY_INFORMATION, FALSE, pid);
+        mLastProcessTime = mCpuUsage.getProcessTime(mProcess);
         emit updateInfo();
         mTimer.start(100);
     }, Qt::QueuedConnection);
@@ -42,6 +42,10 @@ RunningDialog::RunningDialog(QWidget* parent, Profiler* profiler)
 
 RunningDialog::~RunningDialog()
 {
+    if (mProcess != INVALID_HANDLE_VALUE)
+    {
+        CloseHandle(mProcess);
+    }
 }
 
 void RunningDialog::updateInfo()
